@@ -1,0 +1,13 @@
+
+TASK:
+
+Find the latest modified file in /var/log.
+
+SOLUTION:
+
+You will have to open the file browser window and navigate to the /var/log directory. This will vary somewhat from distribution to distribution. On most recent distributions, you will click on Other Locations > Computer.
+
+Navigate to the /var/log directory. Set the view option to List rather than Icon, and then click on the date.
+
+$ ls -lt /var/log | head -n 2
+

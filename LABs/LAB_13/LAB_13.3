@@ -1,0 +1,22 @@
+
+TASK:
+
+It is nice to have your current working directory as part of your prompt so that a quick glance will give you some information without typing pwd every time.
+
+If you often work on multiple computers, especially if you network from one into another with ssh, it is very convenient to have the computer name be part of your prompt.
+
+Put your current working directory in your command line prompt.
+Put your computer (machine) name in your prompt.
+Put both your current directory and computer name in your prompt.
+How can you make this persistent, so that whenever you start a bash command shell, this is your prompt? 
+
+SOLUTION:
+
+$ echo $PWD
+
+$ PS1='\w>'
+
+$ PS1='\h>'
+
+$ PS1='\h:\w>'
+

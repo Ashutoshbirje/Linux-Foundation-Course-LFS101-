@@ -1,0 +1,19 @@
+
+TASK:
+
+Create a new user, using useradd, and give the user an initial password with passwd.
+Configure this user to be able to use sudo.
+Login as or switch to this new user and make sure you can execute a command that requires root privilege.
+For example, a trivial command requiring root privilege could be:
+
+$ ls /root
+
+SOLUTION:
+
+$ sudo useradd newuser
+
+$ sudo passwd newuser
+
+$ sudo su newuser
+
+$ sudo ls /root

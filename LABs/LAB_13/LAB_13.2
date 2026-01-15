@@ -1,0 +1,18 @@
+
+TASK:
+
+Create a small file /tmp/ls, which contains just the line:
+
+echo HELLO, this is the phony ls program.
+
+Then, make it executable by doing:
+
+$ chmod +x /tmp/ls
+
+Append /tmp to your path, so it is searched only after your usual path is considered. Type ls and see which program is run: /bin/ls or /tmp/ls?
+Pre-pend /tmp to your path, so it is searched before your usual path is considered. Once again, type ls and see which program is run: /bin/ls or /tmp/ls?
+What are the security considerations in altering the path this way?
+
+SOLUTION:
+
+

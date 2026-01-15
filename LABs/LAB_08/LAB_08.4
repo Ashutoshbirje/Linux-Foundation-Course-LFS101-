@@ -1,0 +1,14 @@
+
+TASK:
+
+Find the init.d directory, starting from /, and then create a symbolic link from within your home directory to this directory.
+
+Note that this SysVinit directory is no longer used much in systemd-based systems, but is usually kept for backwards compatibility reasons.
+
+SOLUTION:
+
+$ find / -type d -name init.d
+$ cd ~
+$ ln -s /etc/init.d .
+
+Note you will get a lot of noise about trying to look at files and directories normal users are not allowed to examine. If you preface the find command with sudo these will not occur

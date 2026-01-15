@@ -1,0 +1,22 @@
+
+TASK:
+
+We are going to launch a graphical program from a terminal window, so that one can no longer type in the window. gedit is an easy choice, but you can substitute any other program that does this.
+
+The solution file contains a step-by-step procedure for putting jobs in background, bringing them back to foreground, etc. Please repeat the steps, substituting the program you are using if it is not gedit.
+
+SOLUTION:
+
+$ top &
+
+$ jobs -l 
+
+$ bg %[job_id]
+
+$ fg %[job_id]
+
+$ jobs -l
+
+$ kill -9 [id]
+
+

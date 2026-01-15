@@ -1,0 +1,26 @@
+
+TASK:
+
+Issue the command:
+
+student:/tmp> cat /etc/fstab
+
+Now type:
+
+student:/tmp> mount
+
+Compare the results. What are the differences?
+
+Find another way to see a list of the mounted filesystems, by examining the /proc pseudo-filesystem.
+
+SOLUTION:
+
+Typically, mount will show more filesystems mounted than are shown in /etc/fstab, which only lists those which are explicitly requested.
+
+The system, however, will mount additional special filesystems required for normal operation, which are not enumerated in /etc/fstab.
+
+Another way to show mounted filesystems is to type:
+
+student:/tmp> cat /proc/mounts
+
+

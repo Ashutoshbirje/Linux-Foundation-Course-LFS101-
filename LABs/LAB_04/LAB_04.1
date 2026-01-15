@@ -1,0 +1,25 @@
+
+TASK:
+
+Check the status of the httpd (Apache Web Server) server on your system.
+
+If it is running, stop it and check again.
+
+Start the service and check the status.
+
+You probably want to stop it again when you are done.
+
+SOLUTION:
+
+$ sudo apt update 
+
+$ sudo apt install apache2 -y
+
+$ sudo systemctl status httpd
+
+$ sudo systemctl start httpd
+
+$ sudo systemctl status httpd
+
+$ sudo systemctl stop httpd
+

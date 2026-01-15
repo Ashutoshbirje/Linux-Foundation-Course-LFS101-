@@ -1,0 +1,27 @@
+
+TASK:
+
+Typing long commands and file names over and over again gets rather tedious, and leads to a lot of trivial errors, such as typos.
+
+Deploying aliases allows us to define shortcuts to alleviate the pain of all of this typing.
+
+Suppose you are a member of a project team that works in a common, shared directory for your project. This directory is located in /home/staff/RandD/projects/projectX/src.
+
+When you are working on Project X, you often need to create and modify your files in this directory. It does not take too long before typing in: 
+
+cd /home/staff/RandD/projects/projectX/src
+
+gets tedious.
+
+Define and use an alias named "projx" to do the above cd command for you.
+
+SOLUTION:
+
+$ cd ~
+
+$ nano .bashrc
+
+PASTE this into below content 
+ 
+# Custom alias creation 
+alias ASH='echo "ASHUTOSH"'  

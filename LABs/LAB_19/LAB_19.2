@@ -1,0 +1,20 @@
+
+TASK:
+
+With the newly created user from the previous exercise, look at the password aging for the user.
+
+Modify the expiration date for the user, setting it to be something that has passed, and check to see what has changed.
+
+When you are finished and wish to delete the newly created account, use userdel, as in:
+
+$ sudo userdel newuser
+
+SOLUTION:
+
+$ chage --list newuser
+
+$ sudo chage -E 2014-31-12 newuser
+
+$ chage --list newuser
+
+$ sudo userdel newuser

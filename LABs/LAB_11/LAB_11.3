@@ -1,0 +1,68 @@
+
+TASK:
+
+Archiving (or backing up) your files from time to time is essential good hygiene. You might type a command and thereby unintentionally clobber files you need and did not mean to alter.
+
+Furthermore, while your hardware may be deemed fairly reliable, all devices do fail in some fashion eventually (even if it is just an unexpected power failure). Often, this happens at the worst possible time. Periodically backing up files is a good habit to get into.
+
+It is, of course, important to do backups to external systems through a network, or onto external storage, such as an external drive or USB stick. Here, we will be making a backup archive on the same system, which is very useful, but won’t help if the drive fails catastrophically, or your computer is stolen or the building gets zapped by an asteroid or a fire.
+
+First, using tar, backup all files and subdirectories under your home directory. Place the resulting tarball file in the /tmp directory, giving it the name backup.tar.
+
+Second, accomplish the same task with gzip compression using the -z option to tar, creating /tmp/backup.tar.gz.
+
+Compare the size of the two files (with ls -l).
+
+For additional experience, make backups using the -j option using the bzip2 compression, and -J option for using the xz compression.
+
+
+SOLUTION:
+
+To construct a tarball archive of your home directory, you can do:
+
+student:/tmp> tar -cvf /tmp/backup.tar ~
+
+or equivalently
+
+student:/tmp> tar -cvf /tmp/backup.tar /home/student
+
+Note you can have omitted the - in the options with no change. In the following, we will not bother using the -v option for verbose. To create archives with all three compression utilities, run:
+
+student:/tmp> tar zcf /tmp/backup.tar.gz ~
+student:/tmp> tar jcf /tmp/backup.tar.bz2 ~
+student:/tmp> tar Jcf /tmp/backup.tar.xz ~
+
+Comparing the sizes (first using the -h option to ls to make it human-readable):
+
+student@ubuntu:~student:/tmp> ls -lh /tmp/backup*
+
+-rw-rw-r-- 1 student student 8.3M Apr 17 10:14 /tmp/backup2.tar.gz
+-rw-rw-r-- 1 student student 12M Apr 17 10:13 /tmp/backup.tar
+-rw-rw-r-- 1 student student 8.4M Apr 17 10:15 /tmp/backup.tar.bz2
+-rw-rw-r-- 1 student student 8.3M Apr 17 10:14 /tmp/backup.tar.gz
+-rw-rw-r-- 1 student student 8.2M Apr 17 10:15 /tmp/backup.tar.xz
+
+and then without it:
+
+student@ubuntu:~student:/tmp> ls -l /tmp/backup*
+
+-rw-rw-r-- 1 student student 8686942 Apr 17 10:14 /tmp/backup2.tar.gz
+-rw-rw-r-- 1 student student 12226560 Apr 17 10:13 /tmp/backup.tar
+-rw-rw-r-- 1 student student 8720491 Apr 17 10:15 /tmp/backup.tar.bz2
+-rw-rw-r-- 1 student student 8686929 Apr 17 10:14 /tmp/backup.tar.gz
+-rw-rw-r-- 1 student student 8551064 Apr 17 10:15 /tmp/backup.tar.xz
+
+Note in this case, there is not much difference in the different archiving methods, but this particular directory was a bad choice because it already contained a lot of compressed files. A somewhat better example involving more text files:
+
+student:/tmp> tar cf /tmp/doc.tar /usr/share/doc
+student:/tmp> tar zcf /tmp/doc.tar.gz /usr/share/doc
+student:/tmp> tar jcf /tmp/doc.tar.bz2 /usr/share/doc
+student:/tmp> tar Jcf /tmp/doc.tar.xz /usr/share/doc
+student:/tmp> ls -lh /tmp/doc.tar*
+
+-rw-rw-r-- 1 student student 85M Apr 17 10:34 /tmp/doc.tar
+-rw-rw-r-- 1 student student 31M Apr 17 10:35 /tmp/doc.tar.bz2
+-rw-rw-r-- 1 student student 34M Apr 17 10:34 /tmp/doc.tar.gz
+-rw-rw-r-- 1 student student 28M Apr 17 10:36 /tmp/doc.tar.xz
+
+which shows xz did best, followed by bz2 and then gz. You may have noticed, however, the inverse relationship between the size reduction of the compression and how long it took!

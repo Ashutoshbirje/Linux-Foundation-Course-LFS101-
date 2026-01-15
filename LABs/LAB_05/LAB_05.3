@@ -1,0 +1,26 @@
+
+TASK
+
+The basic operations will be the same here, whether you have a GNOME or KDE desktop, although exact procedures and choices may differ slightly.
+
+Create a new text file on the desktop named lab.txt, using the graphical file manager.
+Delete the file by sending it to Trash.
+Verify the file is now in ~/.local/share/Trash, or a subdirectory thereof.
+NOTE: You will have to get your file browser to show hidden files and directories, those that start with a .).
+Recover the file and make sure it is in its original location.
+
+SOLUTION
+
+$ touch lab.txt
+
+$ ls
+
+$ gio trash lab.txt
+
+$ ls
+
+$ trash-listmv ~/.local/share/Trash/files/filename ~/Recovered/ 
+
+$ ls
+
+(If rm is used to remove file then it can not be found in trash)

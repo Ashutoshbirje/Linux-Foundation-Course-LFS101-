@@ -1,0 +1,51 @@
+
+TASK:
+
+Linux and other open source communities often use the patch utility to disseminate modifications and updates. Here, we will give a practical introduction to using diff and patch.
+
+It would be a good idea to read the man pages for both patch and diff to learn more about advanced options and techniques, that will help one to work more effectively with patch. In particular, the form of patches has a lot to do with whether they can be accepted in their submitted form.
+
+Change to the /tmp directory.
+Copy a text file to /tmp. For example, copy /etc/group to /tmp.
+Use the dd utility to copy the text file to a new file in /tmp while converting characters to upper-case, as in: student:/tmp> dd if=/tmp/group of=/tmp/GROUP conv=ucase. (We will discuss dd shortly). The conv=ucase option will convert all of the characters to upper-case characters.  If you prefer, you can use any other method to introduce changes in the text file; there is no need to use dd.
+According to the man page for patch, the preferred options for preparing a patch with diff are -Naur when comparing two directory trees recursively. We will ignore the -a option, which means treat all files as text, since patch and diff should only be used on text files anyway. Since we are just comparing two files, we do not need to use the N or r options to diff, but we could use them anyway as it will not make a difference. Compare group and GROUP using diff, and prepare a proper patch file.
+Use patch to patch the original file, /tmp/group, so its contents now match those of the modified file, /tmp/GROUP. You might try with the --dry-run option first!
+Finally, to prove that your original file is now patched to be the same one with all upper-case characters, use diff on those two files. The files should be the same and you will not get any output from diff.
+
+SOLUTION:
+
+For this exercise, you could use any text file, but we will use /etc/group as described.
+
+student:/tmp> cd /tmp
+student:/tmp> cp /etc/group /tmp
+student:/tmp> dd if=/tmp/group of=/tmp/GROUP conv=ucase
+2+1 records in
+2+1 records out
+1054 bytes (1.1 kB, 1.0 KiB) copied, 0.00048203 s, 2.2 MB/
+student:/tmp> diff -Nur group GROUP > patchfile
+student:/tmp> cat patchfile
+--- group       2015-04-17 11:03:26.710813740 -0500
++++ GROUP       2015-04-17 11:15:14.602813740 -0500
+@@ -1,68 +1,68 @@
+-root:x:0:
+-daemon:x:1:
+-bin:x:2:
+-sys:x:3:
+....
+-libvirtd:x:127:student
+-vboxsf:x:999:
++ROOT:X:0:
++DAEMON:X:1:
++BIN:X:2:
++SYS:X:3:
+.....
+student:/tmp> patch --dry-run group patchfile
+checking file group
+student:/tmp> patch group patchfile
+patching file group
+Note you could have also done either of these two commands:
+student:/tmp> patch group < patchfile
+student:/tmp> patch < patchfile
+student:/tmp> diff -s group GROUP
+student:/tmp> Files group and GROUP are identical
+

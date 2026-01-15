@@ -1,0 +1,17 @@
+
+TASK:
+
+Set up a cron job to do some simple task every day at 10 a.m.
+
+SOLUTION:
+
+$ date >> ~/cron_output.txt
+
+$ crontab -e
+
+$ 0 10 * * * date >> ~/cron_output.txt
+
+$ crontab -l
+
+$ systemctl status crond    # RHEL/CentOS
+

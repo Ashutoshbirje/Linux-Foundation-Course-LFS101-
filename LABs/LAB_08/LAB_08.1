@@ -1,0 +1,21 @@
+
+TASK:
+
+From within a graphical terminal (gnome-terminal, konsole, etc.), kill the current graphical desktop.
+
+Your method will depend on your distribution and your greeter program (i.e., gdm or kdm).
+
+Restart the GUI from the console
+
+SOLUTION:
+
+Methods of bringing down the GUI:
+
+$ sudo systemctl stop gdm
+$ sudo telinit 3
+
+Methods of bringing the GUI back up:
+
+$ sudo systemctl start gdm
+$ sudo telinit 5
+
